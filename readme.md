@@ -1,0 +1,142 @@
+## E-COMMERCE API DOCUMENTATION
+
+***INSTALLATION COMMAND:***
+
+```npm install```
+
+***TEST ACCOUNTS:***
+- Regular User:
+     - username: user1
+     - pwd: user123
+- Admin User:
+    - username: admin
+    - pwd: admin123
+    
+
+***ROUTES:***
+- User registration (POST)
+	- http://localhost:4001/user/register
+    - auth header required: NO
+    - request body: 
+        - username (string)
+        - password (string)
+        - firstName (string)
+        - lastName (string)
+        - email (string)
+        - mobileNo (string)
+        - address (string)
+- User authentication (POST)
+	- http://localhost:4001/user/login
+    - auth header required: NO
+    - request body: 
+        - username (string)
+        - password (string)
+- Retrieve user information (GET)
+    - http://localhost:4001/user/details
+    - auth header required: YES
+    - request body: none
+- Changing user to admin (Admin only) (POST)
+    - http://localhost:4001/user/update-user
+    - auth header required: YES
+    - request body:
+        - userId (string)
+- Updating user information (POST)
+    - http://localhost:4001/user/update
+    - auth header required: YES
+    - request body:
+        - username (string)
+        - password (string)
+        - firstName (string)
+        - lastName (string)
+        - email (string)
+        - mobileNo (string)
+        - address (string)
+- Add new product (Admin only) (POST)
+	- http://localhost:4001/product/add-product
+    - auth header required: YES
+    - request body: 
+        - name (string)
+        - description (string)
+        - price (number)
+        - category (string)
+        - quantityInSTock (number)
+- Retrieve all products (GET)
+	- http://localhost:4001/products/all
+    - auth header required: NO
+    - request body: none
+- Retrieve all ACTIVE products (GET)
+	- http://localhost:4001/products/active
+    - auth header required: NO
+	- request body: none
+- Search product by name (POST)
+    - http://localhost:4001/product/search
+    - auth header required: NO
+    - request body:
+        - productName (string)
+- Updating product information (Admin only) (PUT)
+    - http://localhost:4001/product/:productId
+    - auth header required: YES
+    - request body:
+        - name (string)
+        - description (string)
+        - price (number)
+        - category (string)
+        - quantityInSTock (number)
+- Archiving a product (Admin only) (PUT)
+    - http://localhost:4001/product/:productId/archive
+    - auth header required: YES
+    - request body: none
+- Activating a product (Admin only) (PUT)
+    - http://localhost:4001/product/:productId/activate
+    - auth header required: YES
+    - request body: none
+- Creating new order (Users only) (POST)
+    - http://localhost:4001/order/add-product
+    - auth header required: YES
+    - request body:
+        - productId (string)
+        - quantityInOrder (number)
+- Retrieving all their orders (Users only) (GET)
+    - http://localhost:4001/order/my-order
+    - auth header required: YES
+    - request body: none
+- Retrieving all orders (Admin only) (GET)
+    - http://localhost:4001/order/all
+    - auth header required: YES
+    - request body: none
+- Updating quantity (POST)
+    - http://localhost:4001/order/update-order
+    - auth header required: YES
+    - request body:
+        - productID (string)
+        - newQuantity (number)
+- Removing product (POST)
+    - http://localhost:4001/order/remove-order
+    - auth header required: YES
+    - request body:
+        - productId (string)
+- Checking out orders (Users only) (POST)
+    - http://localhost:4001/order/checkout
+    - auth header required: YES
+    - request body:
+        - productsToCheckout (array)
+            - productId (string), quantity (number)
+        - shippingAddress (array)
+            - houseNo (string)
+            - street (string)
+            - province (string)
+            - country (string)
+            - zipcode (string)
+- Update order status (Admin only) (POST)
+    - http://localhost:4001/user/update-order-status
+    - auth header required: YES
+    - request body:
+        - orderId (string)
+        - newStatus (string)
+- Adding product review (Users only) (POST)
+    - http://localhost:4001/order/add-review/:productId
+    - auth header required: YES
+    - request body:
+        - rating (number)
+        - comment (string)
+<!-- Add the rest of your routes here -->
